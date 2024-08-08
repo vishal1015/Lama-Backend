@@ -13,7 +13,9 @@
 
 
  //routes
- 
+ app.use('/hare-krishna', (req, res)=>{
+   res.send("Hare Krishna, I am running!")
+ })
 
  app.get('/', (req, res)=>{
     res.send('Hare krisna in bckend');
