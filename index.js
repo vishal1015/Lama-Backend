@@ -13,7 +13,7 @@
 
 
  //routes
- app.use('/hare-krishna', (req, res)=>{
+ app.get('/hare-krishna', (req, res)=>{
    res.send("Hare Krishna, I am running!")
  })
 
