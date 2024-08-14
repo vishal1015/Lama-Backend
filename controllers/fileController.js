@@ -71,7 +71,7 @@ exports.deleteFile = async (req, res) => {
       return res.status(404).json({ message: "File not found" });
     }
 
-    // Also remove the file reference from the project's files array
+    // remove the file reference from the project's files array
     await Project.findByIdAndUpdate(projectId, {
       $pull: { files: fileId },
     });

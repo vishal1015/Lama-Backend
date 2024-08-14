@@ -4,13 +4,10 @@ const User = require("../models/userModel");
 // Create a new project
 exports.createProject = async (req, res) => {
   try {
-    console.log(req.body); // Add this line for debugging
-    const { userId } = req.params; // User ID from the URL
-    const { projectName } = req.body; // Project details from the request body
+    // console.log(req.body); 
+    const { userId } = req.params; 
+    const { projectName } = req.body; 
 
-    // console.log(userId, projectName);
-
-    // Find the user to ensure they exist
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -19,13 +16,13 @@ exports.createProject = async (req, res) => {
     // Create the project
     const newProject = new Project({
       projectName,
-      user: userId, // Associate the project with the user
+      user: userId, 
     });
 
     // Save the project
     const savedProject = await newProject.save();
 
-    // Optionally, you might want to add this project ID to the user's project list
+    //add this project ID to the user's project list
     user.projects.push(savedProject._id);
     await user.save();
 
@@ -82,7 +79,7 @@ exports.deleteProject = async (req, res) => {
       return res.status(404).json({ message: "Project not found" });
     }
 
-    // Also remove the project reference from the user's projects array
+    
     await User.findByIdAndUpdate(deletedProject.user, {
       $pull: { projects: projectId },
     });
