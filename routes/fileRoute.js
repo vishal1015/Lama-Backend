@@ -23,4 +23,9 @@ router.delete(
   fileController.deleteFile
 );
 
+// receve the file information
+router.get(
+  "/users/:userId/projects/:projectId/files/:fileId",
+  fileController.getFile
+);
 module.exports = router;

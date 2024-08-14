@@ -8,7 +8,7 @@ exports.createProject = async (req, res) => {
     const { userId } = req.params; // User ID from the URL
     const { projectName } = req.body; // Project details from the request body
 
-    console.log(userId, projectName);
+    // console.log(userId, projectName);
 
     // Find the user to ensure they exist
     const user = await User.findById(userId);
