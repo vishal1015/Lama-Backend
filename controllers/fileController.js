@@ -5,7 +5,7 @@ const User = require("../models/userModel");
 exports.createFile = async (req, res) => {
   try {
     const { projectId } = req.params;
-    const { name, description } = req.body;
+    const {name, description } = req.body;
 
     const project = await Project.findById(projectId);
     if (!project) {
@@ -27,6 +27,7 @@ exports.createFile = async (req, res) => {
 exports.getFiles = async (req, res) => {
   try {
     const { projectId } = req.params;
+    // const { projectId } = req.body;
 
     const project = await Project.findById(projectId).populate("files");
     if (!project) {
@@ -65,6 +66,7 @@ exports.updateFile = async (req, res) => {
 exports.deleteFile = async (req, res) => {
   try {
     const { fileId, projectId } = req.params;
+    // const { fileId, projectId } = req.body;
 
     const deletedFile = await File.findByIdAndDelete(fileId);
     if (!deletedFile) {
@@ -85,6 +87,7 @@ exports.deleteFile = async (req, res) => {
 exports.getFile = async (req, res) => {
   try {
     const { fileId } = req.params;
+    // const { fileId } = req.body;
 
     // Fetch the file and include both 'description' and 'name' fields
     const searchedFile = await File.findById(fileId).select("description name");
